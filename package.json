@@ -2,7 +2,6 @@
   "name": "pso-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://alteredstudio.github.io/filterDemo/",
   "dependencies": {
     "axios": "^0.16.1",
     "fuse.js": "^2.6.2",
