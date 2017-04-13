@@ -1,0 +1,228 @@
+
+// ==========================================================================
+// Buttons
+// ==========================================================================
+
+.btn, input[type=submit]{
+  @extend %button-text-bold;
+  transition: all $transition-speed ease-out;
+  display: inline-block;
+  font-size: 1.0rem;
+  text-align: center;
+  white-space: nowrap;
+  user-select: none;
+  cursor: pointer;
+  border-radius: 3.0rem;
+  padding: 1.28rem 6rem;
+  @media (max-width: $container-desktop) {
+    padding: 1.28rem 3.5rem;
+  }
+  background: $button-bg-color;
+  color: $button-font-color;
+  border: $selected-border solid $button-bg-color;
+  text-transform: $button-text-style;
+  &.btn-square{
+    border-radius: 0;
+  }
+  &:hover,
+  &:active,
+  &.active,
+  &:focus{
+    background: lighten($button-bg-color, 7%);
+    color: $button-font-color;
+    border: $selected-border solid lighten($button-bg-color, 7%);
+  }
+  &.btn-hollow{
+    background: transparent;
+    color: $button-bg-color;
+    border: $selected-border solid $button-bg-color;
+    &:hover,
+    &:active,
+    &.active,
+    &:focus{
+      background: $button-bg-color;
+      color: $button-font-color;
+      border: $selected-border solid $button-bg-color;
+    }
+  }
+  &.btn-danger  {
+    background-color: $error;
+    border-color: $error;
+    &:hover,
+    &:active,
+    &.active,
+    &:focus{
+      background: lighten($error, 7%);
+      color: $button-font-color;
+      border: $selected-border solid lighten($error, 7%);
+    }
+  }
+  &.btn-berry  {
+    background-color: $berry;
+    border-color: $berry;
+    &:hover,
+    &:active,
+    &.active,
+    &:focus{
+      background: lighten($berry, 7%);
+      color: $button-font-color;
+      border: $selected-border solid lighten($berry, 7%);
+    }
+  }
+  &.btn-teal  {
+    background-color: $teal;
+    border-color: $teal;
+    &:hover,
+    &:active,
+    &.active,
+    &:focus{
+      background: lighten($teal, 7%);
+      color: $button-font-color;
+      border: $selected-border solid lighten($teal, 7%);
+    }
+  }
+  // Alternate Colors
+  &.btn-green  {
+    background-color: $mint;
+    border-color: $mint;
+    &:hover,
+    &:active,
+    &.active,
+    &:focus{
+      background: lighten($valid, 7%);
+      color: $button-font-color;
+      border: $selected-border solid lighten($valid, 7%);
+    }
+  }
+  &.btn-back  {
+    background-color: $slate-light;
+    border-color: $slate-light;
+    &:hover,
+    &:active,
+    &.active,
+    &:focus{
+      background: $cloud-dark;
+      color: $button-font-color;
+      border: $selected-border solid $cloud-dark;
+    }
+  }
+  // End: Alternate Colors
+  &.btn-block {
+    display: block;
+    width: 100%;
+  }
+  &.btn-sm {
+    font-size: .85rem;
+    line-height: .85rem;
+    padding: .45rem 1.1rem;
+  }
+  &.btn-md {
+    font-size: 1rem;
+    line-height: 1rem;
+    padding: .8rem 1.6rem;
+  }
+  &.btn-subtle{
+    background: transparent;
+    color: $button-bg-color;
+    border: 0;
+    border-bottom: $selected-border solid transparent;
+    border-radius: 0;
+    padding-right: 0;
+    padding-left: 0;
+    border-radius: 0;
+    padding: .23rem 0;
+    margin: .95rem 0;
+    &:hover,
+    &:active,
+    &.active,
+    &:focus{
+      background: transparent;
+      color: $button-bg-color;
+      border-bottom: $selected-border solid $button-bg-color;
+    }
+  }
+  &.btn-increase{
+    background: $snow-light;
+    width: 48px;
+    height: 48px;
+    padding: 0px;
+    display: inline-block;
+    position: relative;
+    top: 0px;
+    float: right;
+    border-radius: 100%;
+    border: $border solid $cloud-light;
+    &:before,&:after{
+      content:"";
+      display: block;
+      position: absolute;
+      background: $berry;
+      height: 2px;
+      width: 16px;
+      top: 22px;
+    }
+    &:before{
+      left: 15px;
+    }
+    &:after{
+      left: 15px;
+      transform: rotate(90deg);
+    }
+  }
+  &.btn-decrease{
+    background: $snow-light;
+    width: 48px;
+    height: 48px;
+    padding: 0px;
+    display: inline-block;
+    position: relative;
+    top: 0px;
+    float: right;
+    border-radius: 100%;
+    border: $border solid $cloud-light;
+    &:before{
+      content:"";
+      display: block;
+      position: absolute;
+      background: $berry;
+      height: 2px;
+      width: 16px;
+      top: 22px;
+      left: 15px;
+    }
+  }
+  &.btn-increase,&.btn-decrease{
+    &:hover,
+    &:active,
+    &.active,
+    &:focus{
+      background: $berry;
+      border: $border solid $berry;
+      &:before,&:after{
+        background: $snow-light;
+      }
+    }
+  }
+}
+
+input[type=submit], button[type=submit], input, textarea, .btn {
+  &:disabled{
+    background: $cloud-light;
+    border: $selected-border solid $cloud-light;
+    color: $snow-light;
+    &:hover{
+      cursor: not-allowed;
+      background: $cloud-light !important;
+      border: $selected-border solid $cloud-light;
+      color: $snow-light;
+    }
+    &.btn-hollow{
+      background: $snow-light;
+      color: $cloud-light;
+      &:hover{
+        background: $snow-light !important;
+        color: $cloud-light;
+      }
+    }
+  }
+}

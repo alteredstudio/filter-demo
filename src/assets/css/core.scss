@@ -1,0 +1,22 @@
+
+// ------------------------------------------------------------------
+//  Core Styles of Min
+// ------------------------------------------------------------------
+
+@import '_colors.scss',
+        '_vars.scss',
+        '_typography.scss',
+        '_reset.scss',
+        '_grid.scss',
+        '_forms.scss',
+        '_icons.scss',
+        '_buttons.scss',
+        '_helpers.scss',
+        '_cards.scss',
+        '_positioning.scss';
+        //'_mockups.scss',
+        //'_custom-selects.scss';
+
+@media print {
+  @import                              '_print';
+}

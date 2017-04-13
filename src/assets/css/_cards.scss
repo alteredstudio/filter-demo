@@ -1,0 +1,114 @@
+.card {
+  position: relative;
+  display: block;
+  margin-bottom: 1.5rem;
+  background-color: $snow-light;
+  transition: 0.3s;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.0);
+  font-size: 15px;
+  -webkit-backface-visibility: hidden;
+  &.border{
+      border: 1px solid rgba(0, 0, 0, 0.2);
+  }
+  &.tall-sm{
+    height: 220px;
+    .card-block{
+      @include vertical-align;
+    }
+  }
+  &.tall-md{
+    height: 320px;
+    .card-block{
+      @include vertical-align;
+    }
+  }
+  &.tall-lg{
+    height: 400px;
+    .card-block{
+      @include vertical-align;
+    }
+  }
+  a:hover {
+    text-decoration: none;
+  }
+  &:hover {
+    opacity: 1;
+    z-index: 5;
+  }
+  &.zoom{
+    &:hover {
+      transform: scale(1.025);
+    }
+  }
+  &.hover{
+    &:hover {
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.20);
+    }
+  }
+  .card-block {
+    padding: 2rem;
+    @media (max-width: $container-desktop) {
+      padding: 1.5rem;
+    }
+  }
+
+  .card-block-sm {
+    padding: 1rem;
+  }
+
+  .card-title {
+    font-size: 18px;
+    margin-bottom: .75rem;
+  }
+
+  .card-text:last-child {
+    margin-bottom: 0;
+  }
+
+  .card-header {
+    padding: .75rem 1.25rem;
+    background-color: $snow;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    &:first-child {
+      border-radius: $border-radius1 $border-radius1 0 0;
+    }
+  }
+  .card-block {
+
+    .card-block-inner {
+      small {
+        font-size: 40%;
+      }
+      span {
+        padding: 0 .2rem;
+        margin: 0 1rem;
+      }
+    }
+  }
+
+  .card-img-top {
+    overflow: hidden;
+    max-height: 200px;
+    img {
+    }
+  }
+
+  .card-footer {
+    padding: .75rem 1.25rem;
+    background-color: $snow;
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+    &:last-child {
+      border-radius: 0 0 $border-radius1 $border-radius1;
+    }
+  }
+
+  &.card-inverse {
+    .card-blockquote, .card-footer, .card-header, .card-title {
+      color: $snow-light;
+    }
+    .card-blockquote .blockquote-footer, .card-link, .card-subtitle, .card-text {
+      color: $cloud-light;
+    }
+  }
+
+}

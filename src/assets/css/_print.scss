@@ -1,0 +1,53 @@
+
+// ==========================================================================
+// Print
+// ==========================================================================
+
+// All Elements
+*,
+*:before,
+*:after {
+  background: transparent;
+  color: $slate-dark;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+// Links
+a, a:visited { text-decoration: underline; }
+a[href]:after { content: " (" attr(href) ")"; }
+a[href^="#"]:after, a[href^="javascript:"]:after { content: ""; }
+
+// Code and Blockquotes
+pre, blockquote { page-break-inside: avoid; }
+
+// Tables
+thead { display: table-header-group; }
+tr { page-break-inside: avoid; }
+
+// Images
+img { page-break-inside: avoid; max-width: 100%;}
+
+// Typography
+p, h2, h3 { orphans: 3; widows: 3; }
+h2, h3 { page-break-after: avoid; }
+abbr[title]:after { content: " (" attr(title) ")"; }
+
+// Print Helpers
+
+// General Resets
+.no-float-print { float: none; }
+.no-padding-print { padding: 0; }
+.no-margin-print { margin: 0; }
+
+// Display Types
+.none-print { display: none; }
+.block-print { display: block; }
+.inline-block-print { display: inline-block; }
+.inline-print { display: inline; }
+
+// Text Alignments
+.text-left-print { text-align: left; }
+.text-right-print { text-align: right; }
+.text-center-print { text-align: center; }
+.text-justify-print { text-align: justify; }

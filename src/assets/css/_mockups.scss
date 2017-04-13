@@ -1,0 +1,35 @@
+// Visual aid for seeing column layout
+.text-mockup{
+  background: $snow-dark;
+  border-radius: $radius;
+  overflow: hidden;
+  text-align: center;
+  color: $snow-light;
+  margin-bottom: 1.5rem;
+
+  &.text-mockup-paragraph{
+    min-height: 1.25rem; // for paragraphs (default)
+  }
+
+  &.text-mockup-list{ // for list (li)
+    min-height: 0.6rem;
+    margin-bottom: 1.0rem;
+  }
+
+  &.text-mockup-cover-title{ // for h1
+    min-height: 5.0rem;
+  }
+
+  &.text-mockup-header{ // for h2, h3
+    min-height: 3.5rem;
+  }
+
+  &.text-mockup-footer{ // for footer, small
+    min-height: 0.4rem;
+    margin-bottom: 0.7rem;
+  }
+
+  &.text-mockup-grid{ // for grid visual layout
+    min-height: 2.25rem;
+  }
+}

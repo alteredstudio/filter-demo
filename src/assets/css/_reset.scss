@@ -1,0 +1,48 @@
+
+// ==========================================================================
+// Reset
+// ==========================================================================
+
+// Border Box
+*, *:before, *:after { box-sizing: border-box; }
+
+// HTML Font / Text Size Resets
+html { font-size: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; }
+html, button, input, select, textarea { font-family: sans-serif; }
+
+// HTML5 Elements
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary { display: block; }
+
+// Remove Default Margins
+body, form, fieldset, legend, input, select, textarea, button { margin: 0; }
+
+// Audio and Video Elements
+audio, canvas, progress, video { display: inline-block; vertical-align: baseline; }
+audio:not([controls]) { display: none; height: 0; }
+
+// Hidden Elements
+[hidden], template { display: none; }
+
+// Images
+img { border: 0; display: block; }
+svg:not(:root) { overflow: hidden; }
+
+
+// Remove Touch and Focus Decoration
+*{
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  &:focus {
+    outline: 0;
+  }
+}
+
+body{
+  // No Horizontal Scrollbars
+  //overflow-x: hidden;
+  // Flexbox Sticky Footer
+  //display: flex;
+  //min-height: 100vh;
+  //height: 100%;
+  //max-width: 100%;
+  //flex-direction: column;
+}

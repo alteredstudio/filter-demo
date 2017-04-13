@@ -1,0 +1,420 @@
+
+// ==========================================================================
+// Forms
+// ==========================================================================
+
+form, fieldset {
+  padding: 0px;
+  border: 0;
+}
+// Fix Safari Height
+input:not([type=checkbox]):not([type=radio]), select{
+  //height: 2.5rem;
+}
+input:not([type=checkbox]):not([type=radio]), textarea{
+  -webkit-appearance: none;
+}
+input:not([type=checkbox],[type=radio],[type=submit],.numInput), textarea, select{
+  box-shadow: none !important;
+  background: $snow-light;
+  font-size: 1.125rem;
+	padding: 1.0rem 1.0rem;
+	width: 100%;
+  border-radius: $input-radius;
+	border: $selected-border solid $snow-dark;
+  transition: border-color $transition-speed ease-out;
+	&:focus{
+		border: $selected-border solid $sky;
+	}
+}
+input[type='checkbox'], input[type='radio']{
+  display: inline-block;
+  float: left;
+  position: relative;
+  top: 10px;
+  margin-right: 8px;
+}
+
+label{
+  margin-bottom: 8px;
+  display: inline-block;
+}
+
+// Standard Select
+select {
+  text-indent: 3px;
+  display: block;
+  background: $snow;
+  &:focus{
+    text-indent: 2px;
+  }
+}
+.select{
+  margin-bottom: 32px;
+}
+
+// // Custom Select
+// .select{
+//   position: relative;
+//   &:before,
+//   &:after{
+//     content: "";
+//     position: absolute;
+//     right: 15px;
+//     width: 0;
+//   	height: 0;
+//   	border-left: 5px solid transparent;
+//   	border-right: 5px solid transparent;
+//   }
+//   &:after{
+//     bottom: 25px;
+//     right: 23px;
+//     border-top: 8px solid $cloud-light;
+//   }
+//   select{
+//     -webkit-appearance: none;
+//     text-indent: 2px;
+//     display: block;
+//   }
+// }
+
+
+// ==========================================================================
+// Advanced Forms
+// ==========================================================================
+
+/* Change autocomplete styles in WebKit */
+:-webkit-autofill,
+:-webkit-autofill:hover,
+:-webkit-autofill:focus {
+  // border: $border solid $cloud-light !important;
+  // -webkit-text-fill-color: $slate-dark !important;
+  // -webkit-box-shadow: 0 0 0px 1000px $snow-light inset !important;
+  // transition: background-color 5000s ease-in-out 0s !important;
+}
+
+::-webkit-input-placeholder {
+   color: $snow-dark;
+}
+
+// Specificity overrides
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  &.btn-block {
+    width: 100%;
+  }
+}
+
+// Tile Toggles
+@mixin tile-toggles($items:2,$width:8rem, $text-color:#555, $active-color: $sky, $border-color: $snow-dark) {
+	.tile-toggle-group {
+		display: table;
+		font-weight: 400;
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+		margin-left: auto;
+		margin-right: auto;
+		width: 100%;
+		border-collapse: collapse;
+		box-sizing: border-box;
+	}
+	.tile-toggle-item {
+		width: 33%;
+		border-left: $width*.1 solid #fff;
+		border-right: $width*.1 solid #fff;
+		&:first-of-type {
+			border-left: 0;
+		}
+		&:last-of-type {
+			border-right: 0;
+		}
+		color: $text-color;
+		display: block;
+		display: table-cell;
+		position: relative;
+		text-align: center;
+		vertical-align: top;
+	}
+	label{
+		box-shadow: 2px 0 0 $border-color inset, -2px 0 0 $border-color inset, 0 -2px 0 $border-color inset, 0 2px 0 $border-color inset ;
+		display: block;
+		position: relative;
+		cursor: pointer;
+		padding-top: $width*.18;
+		padding-bottom: $width*.17;
+    border-radius: $input-radius;
+	}
+	.icon {
+		display: inline-block;
+		width: $width*.5;
+		height: $width*.5;
+		stroke-width: 0;
+		stroke: currentColor;
+		fill: currentColor;
+	}
+	.name {
+		padding-top:$width*.04;
+		display:block;
+		text-align:center;
+		margin:auto;
+		max-width:100%;
+		white-space:nowrap;
+		overflow:hidden;
+	}
+	input[type=radio] {
+		position: absolute;
+		visibility: hidden;
+    // It's necessary to override some default Pattern Library
+    // styles for radio elements:
+    & ~ label {
+    &::before, &::after {
+      display:none;
+    }
+  }
+
+	}
+	input[type=radio]:checked {
+    // It's necessary to override some default Pattern Library
+    // styles for radio elements:
+
+
+		& ~ label{
+    &::before, &::after {
+      display:none;
+    }
+
+			color:#fff;
+			background:$active-color;
+			box-shadow:none;
+			&:hover {
+				color:#fff;
+			}
+		}
+	}
+}
+
+
+
+.tile-toggles {
+	@include tile-toggles($items:2,$width:11rem);
+}
+
+
+// End: Tile Toggles
+
+
+
+
+// Inputs - Hide them
+input[type=radio],
+input[type=checkbox] {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  width: 1px;
+  visibility: hidden;
+  border-radius: 100%;
+}
+
+// Icons Unchecked
+input[type=radio] ~ label,
+input[type=checkbox] ~ label {
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+// Icons Unchecked
+input[type=radio] ~ label:before,
+input[type=checkbox] ~ label:before {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  position: relative;
+  top: 8px;
+  margin-right: 12px;
+  content: '';
+  border-radius: 50%;
+  border: 2px solid $cloud;
+}
+// Icons Unchecked
+input[type=checkbox] ~ label:before {
+  border-radius: 0.0rem;
+}
+
+// Icons Checked
+input[type=radio]:checked ~ label:before,
+input[type=checkbox]:checked ~ label:before  {}
+
+// Radio
+input[type=radio] ~ label:before {}
+// Radio Checked
+input[type=radio]:checked ~ label:before {
+  border: 2px solid $sky
+}
+
+// Icons Unchecked
+input[type=radio] ~ label:after,
+input[type=checkbox] ~ label:after {
+}
+
+input[type=radio]:checked ~ label:after {
+  display: block;
+  content: '';
+  float: left;
+  background: $sky;
+  margin-left: -1rem;
+  border-radius: 50%;
+  position: relative;
+  left: 24px;
+  top: 16px;
+  width: 1rem;
+  height: 1rem;
+}
+
+// Checkbox
+input[type=checkbox] ~ label:before {}
+// Checkbox Checked
+input[type=checkbox]:checked ~ label:before {
+  border: 2px solid $sky
+}
+
+input[type=checkbox]:checked ~ label:after {
+  display: block;
+  content: '';
+  float: left;
+  border: solid $sky;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+  margin-left: -1rem;
+  position: relative;
+  top: 15px;
+  left: 28px;
+  width: 8px;
+  height: 14px;
+}
+
+// Disabled
+input[type=radio]:disabled ~ label,
+input[type=checkbox]:disabled ~ label {
+  opacity: .5;
+  cursor: not-allowed;
+  &:before{
+    opacity: .5;
+    cursor: not-allowed;
+  }
+}
+
+// Floating Labels
+.placeholder {
+  position: relative;
+  margin-bottom: 32px;
+
+  input {
+    height: 64px;
+
+    & ~ .input-icon {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 2rem;
+      height: 2rem;
+
+      &:hover {
+        cursor: pointer;
+        &.icon-view {
+          //@include icon-view($slate-dark);
+        }
+        &.icon-hide {
+          //@include icon-hide($slate-dark);
+        }
+      }
+      &.icon-view {
+        //@include icon-view($cloud);
+      }
+      &.icon-hide {
+        //@include icon-hide($cloud);
+      }
+      &.icon-error {
+        // display: none;
+        //@include icon-error($error);
+      }
+
+    }
+    &:focus{
+      & ~ .input-icon {
+        //@include icon-view($slate-dark);
+        top: 1rem;
+      }
+    }
+  }
+
+  label {
+    cursor: text;
+    font-family: sans-serif;
+    font-size: 1.125rem;
+    letter-spacing: 0.05rem;
+    left: 1.0rem;
+    color: $cloud-dark;
+    font-weight: $font-light;
+    // padding: 0 .5rem;
+    pointer-events: none;
+    position: absolute;
+    // top: 0.9rem;
+    top: 1.3125rem;
+    transition: top 0.2s linear 0.0s, left 0.2s linear 0.0s;
+   }
+  &.open {
+    label {
+        // background: $snow-light;
+        color: $cloud-dark;
+        position: absolute;
+        top: .375rem;
+        // padding: 0 .5rem;
+        font-size: 0.75rem;
+        font-weight: $font-normal;
+     }
+  }
+  &.focused {
+    label {
+      color: $slate-dark;
+     }
+  }
+  input:not([type=checkbox],[type=radio],[type=submit],.numInput), textarea{
+    padding: 1.5rem .9375rem .5rem;
+  }
+
+  // Validation
+  .input-error {
+    position: absolute;
+    left: 1rem;
+    top: 4.175rem;
+    font-size: .875rem;
+    color: $error;
+  }
+  .input-error-box {
+    border-color: $error !important;
+  }
+
+  ::-webkit-input-placeholder { /* WebKit browsers */
+  color:    #fff;
+  }
+  :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+     color:    #fff;
+     opacity:  1;
+  }
+  ::-moz-placeholder { /* Mozilla Firefox 19+ */
+     color:    #fff;
+     opacity:  1;
+  }
+  :-ms-input-placeholder { /* Internet Explorer 10+ */
+     color:    #fff;
+  }
+
+}
