@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FilterDisplay => ({ peopleFiltered, handleChangeCallback }) (
+const FilterDisplay = ({ peopleFiltered, handleChangeCallback }) => (
   <div>
     <h3><strong>Filter</strong></h3>
     <input type="text" onChange={handleChangeCallback} />
