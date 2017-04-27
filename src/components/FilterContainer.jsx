@@ -23,8 +23,6 @@ const options = {
   ],
 };
 
-      //peopleFiltered: PeopleJSON.slice(0, 11),
-
 export default class FilterContainer extends Component {
   state = { data: PeopleJSON, filteredData: [], filterTerm: '' };
 
@@ -51,12 +49,11 @@ export default class FilterContainer extends Component {
   };
 
   render() {
-    console.log(this.props);
     const title = _.get(this.props.location.state, 'title');
 
     return (
       <FilterDisplay
-        title={title}
+        title={title || 'Filter'}
         handleChangeCallback={this.handleChange}
         arrayToRender={this.state.filteredData}
         renderFunction={PersonCard}
@@ -64,17 +61,3 @@ export default class FilterContainer extends Component {
     );
   }
 }
-
-
-//static propTypes = {
-  //filterLimit: PropTypes.number,
-  //debounce: PropTypes.number,
-  //options: PropTypes.number.isRequired,
-//};
-
-// Plan
-//
-// Make a component that can be used for filtering data, accepts filterLimit,
-// debounce, data, options, renderFunction, and initialData (bool) as props. Will use
-// fuse to search passed in data and filter as appropriate. Will render based on
-// render function

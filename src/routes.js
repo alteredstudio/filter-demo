@@ -3,7 +3,7 @@ import Topics from './components/Topics';
 import About from './components/About';
 import FilterContainer from './components/FilterContainer';
 
-// Adding name here for the links iteration in Header.jsx is slightly dangerous
+// Adding name and to here for the links iteration in Header.jsx is slightly dangerous
 // as we ...rest when passing routes into App.jsx so 'name' could pollute the
 // <Route /> props
 
