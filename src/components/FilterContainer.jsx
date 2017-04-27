@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-
 import Fuse from 'fuse.js';
+
 import PeopleJSON from '../stubData/10000.json';
 import FilterDisplay from './FilterDisplay';
+import PersonCard from './PersonCard';
 
+// These should come from elsewhere either as props or as a constant set in env
 const options = {
   shouldSort: true,
   threshold: 0.3,
@@ -13,45 +15,66 @@ const options = {
   maxPatternLength: 32,
   minMatchCharLength: 3,
   keys: [
-    'participant_name',
-    // 'client_id',
-    // 'employee_id',
-    // 'account_number',
-    // 'plan_admin',
+    'participantName',
+    // 'clientId',
+    // 'employeeId',
+    // 'accountNumber',
+    // 'planAdmin'
   ],
 };
 
+      //peopleFiltered: PeopleJSON.slice(0, 11),
+
 export default class FilterContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      people: PeopleJSON,
-      peopleFiltered: PeopleJSON.slice(0, 11),
-      term: '',
-    };
-    this.handleChange = this.handleChange.bind(this);
+  state = { data: PeopleJSON, filteredData: [], filterTerm: '' };
+
+  componentWillMount() {
+    const initialData = _.get(this.props.location.state, 'initialData');
+
+    if (initialData) this.setState({ filteredData: PeopleJSON.slice(0, 11) });
   }
 
-  fuseResults(term) {
-    const fuse = new Fuse(this.state.people, options);
-    const filteredResults = fuse
-      .search(term)
+  fuseResults = (filterTerm) => {
+    const fuse = new Fuse(this.state.data, options);
+    const filteredData = fuse
+      .search(filterTerm)
       .slice(0, 11);
-    this.setState({ peopleFiltered: filteredResults });
-  }
 
-  handleChange(e) {
-    const term = e.target.value;
-    this.setState({ term });
-    _.debounce(() => this.fuseResults(term), 400)();
-  }
+    this.setState({ filteredData });
+  };
+
+  handleChange = (evt) => {
+    const filterTerm = evt.target.value;
+
+    this.setState({ filterTerm });
+    _.debounce(() => this.fuseResults(filterTerm), 400)();
+  };
 
   render() {
+    console.log(this.props);
+    const title = _.get(this.props.location.state, 'title');
+
     return (
       <FilterDisplay
-        peopleFiltered={this.state.peopleFiltered}
+        title={title}
         handleChangeCallback={this.handleChange}
+        arrayToRender={this.state.filteredData}
+        renderFunction={PersonCard}
       />
     );
   }
 }
+
+
+//static propTypes = {
+  //filterLimit: PropTypes.number,
+  //debounce: PropTypes.number,
+  //options: PropTypes.number.isRequired,
+//};
+
+// Plan
+//
+// Make a component that can be used for filtering data, accepts filterLimit,
+// debounce, data, options, renderFunction, and initialData (bool) as props. Will use
+// fuse to search passed in data and filter as appropriate. Will render based on
+// render function

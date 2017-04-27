@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 // cases, otherwise we would only want to use this helper with set <Link />
 // styles
 const setLinks = linkConfigArray => (
-  linkConfigArray.map(({ path, name }) => (
+  linkConfigArray.map(({ path, to, name }) => (
     <li key={path} className="margin-right-2">
-      <Link to={path}>{name}</Link>
+      <Link to={to || path}>{name}</Link>
     </li>
   ))
 );

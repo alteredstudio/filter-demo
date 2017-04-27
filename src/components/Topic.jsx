@@ -1,8 +1,9 @@
 import React from 'react';
+import _ from 'lodash';
 
 const Topic = ({ match }) => (
   <div>
-    <h3>{match.params.topicId}</h3>
+    <h3>{_.get('topicId', match.params)}</h3>
   </div>
 );
 
