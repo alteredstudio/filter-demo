@@ -25,7 +25,6 @@ const routes = [
       pathname: '/search',
       state: {
         title: 'Search',
-        initialData: true,
       },
     },
     component: FilterContainer,
@@ -38,6 +37,7 @@ const routes = [
       pathname: '/filter',
       state: {
         title: 'Filter',
+        initialData: true,
       },
     },
     name: 'Filter',
