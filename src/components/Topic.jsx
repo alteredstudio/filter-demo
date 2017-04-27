@@ -3,7 +3,7 @@ import _ from 'lodash';
 
 const Topic = ({ match }) => (
   <div>
-    <h3>{_.get('topicId', match.params)}</h3>
+    <h3>{_.get(match.params, 'topicId')}</h3>
   </div>
 );
 
